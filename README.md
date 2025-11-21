@@ -1,0 +1,2 @@
+# genRes
+A resume generator
