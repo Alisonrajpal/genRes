@@ -4,6 +4,7 @@ import Header from "./components/Layout/Header";
 import ResumeBuilder from "./components/ResumeBuilder/ResumeBuilder";
 import Home from "./pages/Home/Home";
 import Templates from "./pages/Templates/Templates";
+import Account from "./pages/Account/Account";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/account" element={<Account />} />
             <Route path="/builder" element={<ResumeBuilder />} />
             <Route path="/templates" element={<Templates />} />
           </Routes>

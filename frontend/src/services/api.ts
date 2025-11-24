@@ -1,53 +1,39 @@
-const API_BASE =
-  import.meta.env.VITE_API_URL ||
-  import.meta.env.VITE_BACKEND_URL ||
-  process.env.REACT_APP_API_URL ||
-  "http://localhost:8000";
+import supabase from "./supabaseClient";
+import { generateTextHF } from "./hf";
 
 type GenerateRequest = { prompt: string; model?: string; max_tokens?: number };
 
 export async function generateText(payload: GenerateRequest) {
-  const res = await fetch(`${API_BASE}/generate`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(err || "Generation failed");
-  }
-  return res.json();
+  // Use Hugging Face directly from frontend
+  const text = await generateTextHF(
+    payload.prompt,
+    payload.model || undefined,
+    payload.max_tokens || 256
+  );
+  return { generated_text: text };
 }
 
 export async function saveResume(resumeData: any) {
-  const res = await fetch(`${API_BASE}/resumes`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(resumeData),
-  });
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(err || "Save resume failed");
-  }
-  return res.json();
+  // Insert into Supabase 'resumes' table
+  const { data, error } = await supabase.from("resumes").insert([resumeData]);
+  if (error) throw error;
+  return data;
 }
 
 export async function getTemplates() {
-  const res = await fetch(`${API_BASE}/templates`);
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(err || "Failed to load templates");
-  }
-  return res.json();
+  const { data, error } = await supabase.from("templates").select("*");
+  if (error) throw error;
+  return { templates: data };
 }
 
 export async function getResume(id: string) {
-  const res = await fetch(`${API_BASE}/resumes/${encodeURIComponent(id)}`);
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(err || "Failed to load resume");
-  }
-  return res.json();
+  const { data, error } = await supabase
+    .from("resumes")
+    .select("*")
+    .eq("id", id)
+    .single();
+  if (error) throw error;
+  return { resume: data };
 }
 
 export default { generateText, saveResume, getTemplates, getResume };
