@@ -210,14 +210,14 @@ const ResumeBuilder: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-white mb-2">
             AI Resume Builder
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-blue-100">
             Fill in your information and watch your resume come to life in
             real-time. Use AI to enhance your content.
           </p>
@@ -227,12 +227,12 @@ const ResumeBuilder: React.FC = () => {
           {/* Left Side - Forms */}
           <div className="space-y-6">
             {/* AI Generation Buttons */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="text-sm font-semibold text-blue-900 mb-3 flex items-center">
+            <div className="bg-white/10 border border-white/20 rounded-lg p-4 backdrop-blur-sm">
+              <h3 className="text-sm font-semibold text-white mb-3 flex items-center">
                 <Sparkles className="h-4 w-4 mr-2" />
                 AI Enhancement Tools{" "}
                 {isGenerating && (
-                  <span className="ml-2 text-xs animate-pulse">
+                  <span className="ml-2 text-xs animate-pulse text-blue-100">
                     ● Generating...
                   </span>
                 )}
@@ -280,8 +280,8 @@ const ResumeBuilder: React.FC = () => {
                 </button>
               </div>
               {resumeData.workExperience.length > 0 && (
-                <div className="mt-3 pt-3 border-t border-blue-200">
-                  <p className="text-xs text-blue-700 font-medium mb-2">
+                <div className="mt-3 pt-3 border-t border-white/20">
+                  <p className="text-xs text-blue-100 font-medium mb-2">
                     Generate job descriptions:
                   </p>
                   <div className="flex flex-wrap gap-2">

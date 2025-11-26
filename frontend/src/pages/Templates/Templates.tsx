@@ -47,20 +47,20 @@ const Templates: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
           <Link
             to="/"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4">
+            className="inline-flex items-center text-white hover:text-blue-100 mb-4">
             <ArrowLeft className="h-4 w-4 mr-1" />
             Back to Home
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-white mb-2">
             Resume Templates
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-blue-100">
             Choose from our collection of ATS-friendly templates designed for
             different industries and career levels
           </p>
@@ -146,16 +146,16 @@ const Templates: React.FC = () => {
         </div>
 
         {/* Template Selection Guide */}
-        <div className="mt-12 bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+        <div className="mt-12 bg-white/10 rounded-xl shadow-sm border border-white/20 p-8 backdrop-blur-sm">
+          <h2 className="text-2xl font-bold text-white mb-4">
             How to Choose the Right Template
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+              <h3 className="text-lg font-semibold text-white mb-3">
                 Consider Your Industry
               </h3>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-blue-100">
                 <li className="flex items-start">
                   <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                   <span>
@@ -179,10 +179,10 @@ const Templates: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+              <h3 className="text-lg font-semibold text-white mb-3">
                 ATS Compatibility
               </h3>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-blue-100">
                 <li className="flex items-start">
                   <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                   <span>All templates are ATS-optimized</span>
