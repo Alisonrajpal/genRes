@@ -1,6 +1,6 @@
-const HF_TOKEN = import.meta.env.VITE_HF_TOKEN;
+const HF_TOKEN = (import.meta as any).env.VITE_HF_TOKEN;
 const HF_API_URL = "https://api-inference.huggingface.co/models";
-const USE_MOCK = import.meta.env.VITE_USE_MOCK_HF === "true" || !HF_TOKEN;
+const USE_MOCK = (import.meta as any).env.VITE_USE_MOCK_HF === "true" || !HF_TOKEN;
 
 if (!HF_TOKEN) {
   console.warn(

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { User } from "@supabase/supabase-js";
-import { getCurrentUser, onAuthStateChange } from "../services/supabaseClient";
+import { User, type AuthChangeEvent, type Session } from "@supabase/supabase-js";
+import { getCurrentUser, supabase } from "../services/supabaseClient";
 
 interface AuthContextType {
   user: User | null;
@@ -30,14 +30,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     checkAuth();
 
     // Listen for auth state changes
-    const unsubscribe = onAuthStateChange((user) => {
-      setUser(user);
-    });
+    const { data } = supabase.auth.onAuthStateChange(
+      (_event: AuthChangeEvent, session: Session | null) => {
+        setUser(session?.user ?? null);
+      }
+    );
 
     return () => {
-      if (unsubscribe && typeof unsubscribe.subscription?.unsubscribe === "function") {
-        unsubscribe.subscription.unsubscribe();
-      }
+      data.subscription?.unsubscribe();
     };
   }, []);
 

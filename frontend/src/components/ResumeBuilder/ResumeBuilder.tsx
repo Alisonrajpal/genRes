@@ -74,8 +74,8 @@ const ResumeBuilder: React.FC = () => {
         .map((w) => w.position)
         .join(", ")}. Keep it under 60 words.`;
       const resp = await api.generateText({ prompt, max_tokens: 120 });
-      const generated =
-        resp.generated_text || resp.generatedText || resp.generated || "";
+      const generated = resp.generated_text || "";
+
       setResumeData({
         ...resumeData,
         personalInfo: { ...resumeData.personalInfo, summary: generated },

@@ -1,7 +1,7 @@
-import { createClient, type User } from "@supabase/supabase-js";
+import { createClient, type User, type Session } from "@supabase/supabase-js";
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_KEY;
+const SUPABASE_URL = (import.meta as any).env.VITE_SUPABASE_URL;
+const SUPABASE_KEY = (import.meta as any).env.VITE_SUPABASE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_KEY) {
   console.warn(
@@ -9,11 +9,20 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
   );
 }
 
-export const supabase = createClient(SUPABASE_URL || "", SUPABASE_KEY || "");
+export const supabase = createClient(
+  SUPABASE_URL || "",
+  SUPABASE_KEY || ""
+);
 
+// ----------------------
 // Auth helper functions
+// ----------------------
+
 export async function signUp(email: string, password: string) {
-  const { data, error } = await supabase.auth.signUp({ email, password });
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
   if (error) throw error;
   return data;
 }
@@ -36,14 +45,25 @@ export async function getCurrentUser(): Promise<User | null> {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
   return user;
 }
 
-export async function onAuthStateChange(callback: (user: User | null) => void) {
-  const { data } = supabase.auth.onAuthStateChange((_event, session) => {
-    callback(session?.user || null);
-  });
-  return data;
+// ✅ ✅ IMPORTANT FIX: RETURNS AN UNSUBSCRIBE FUNCTION (NOT A PROMISE OBJECT)
+export function onAuthStateChange(
+  callback: (user: User | null) => void
+) {
+  const { data: { subscription } } =
+    supabase.auth.onAuthStateChange(
+      (_event, session: Session | null) => {
+        callback(session?.user ?? null);
+      }
+    );
+
+  // ✅ Return ONLY an unsubscribe function
+  return () => {
+    subscription.unsubscribe();
+  };
 }
 
 export default supabase;
