@@ -9,6 +9,7 @@ import { ResumeData, Template } from "../../types/resume";
 import { defaultResumeData, defaultTemplate } from "../../utils/default";
 import api from "../../services/api";
 import { Sparkles } from "lucide-react";
+import "../../pages/Home/Home.css";
 
 const ResumeBuilder: React.FC = () => {
   const [resumeData, setResumeData] = useState<ResumeData>(defaultResumeData);
@@ -210,7 +211,7 @@ const ResumeBuilder: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen py-8" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1f393d 30%, #0f172a 100%)' }}>
+    <div className="home-container py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8 text-center">
