@@ -214,7 +214,7 @@ const ResumeBuilder: React.FC = () => {
     <div className="min-h-screen py-8" style={{ background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-8 text-center">
+        <div className="mb-8 text-center bg-black">
           <h1 className="text-3xl font-bold text-white mb-2">
             AI Resume Builder
           </h1>
