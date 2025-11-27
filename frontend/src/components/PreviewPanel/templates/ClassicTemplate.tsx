@@ -22,7 +22,7 @@ const ClassicTemplate: React.FC<{ resumeData: ResumeData }> = ({
       </header>
 
       {/* Content will be similar to Modern but with classic styling */}
-      <div className="space-y-8">{/* Add classic template content */}</div>
+      <div className="space-y-8 text-gray-800">{/* Add classic template content */}</div>
     </div>
   );
 };
