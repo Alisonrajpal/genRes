@@ -48,7 +48,7 @@ const Templates: React.FC = () => {
   };
 
   return (
-    <div className="home-container py-8">
+    <div className="min-h-screen py-8" style={{ background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
