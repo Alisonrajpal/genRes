@@ -62,22 +62,24 @@ export default function Account() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-600">Loading...</p>
+      <div className="min-h-screen bg-gradient-to-br from-[#0f172a] via-[#1f393d] to-[#0f172a]
+ flex items-center justify-center">
+        <p className="text-green-400 text-xl font-extrabold">Loading...</p>
       </div>
     );
   }
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-600">Not authenticated</p>
+      <div className="min-h-screen bg-red-50 flex items-center justify-center">
+        <p className="text-red-600 text-xl font-extrabold">Not authenticated</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#0f172a] via-[#1f393d] to-[#0f172a]
+ py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
@@ -103,7 +105,7 @@ export default function Account() {
 
         {/* Past Generations */}
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-center text-green-400 mb-6">
             Past Generations
           </h2>
 

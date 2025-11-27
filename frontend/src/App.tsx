@@ -13,7 +13,8 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="App min-h-screen bg-gray-50">
+        <div className="App min-h-screen bg-gradient-to-br from-[#0f172a] via-[#1f393d] to-[#0f172a]
+">
           <Routes>
             {/* SignIn page - accessible without authentication */}
             <Route path="/signin" element={<SignIn />} />

@@ -40,7 +40,7 @@ const Home: React.FC = () => {
           ))}
         </div>
 
-        <div className="hero-content">
+        <div className="hero-content p-12 sm:p-16 lg:p-24">
           <h1 className="hero-title">
             Build Your AI-Powered Resume
           </h1>
